@@ -290,6 +290,8 @@ export class BlockEditor {
           editorInstance: self,                 // BlockEditorVueのインスタンス
           itemInstances: item_ins,              // アイテムのデータ処理クラスのインスタンス
           flgFileBrowser: false,                // ファイルブラウザの表示制御フラグ
+          flgLinkBrowser: false,                // ファイルブラウザの表示制御フラグ
+          BrowserType: 'LinkBrowser.url',       // ファイルブラウザの表示制御フラグ
           fileBrowserRef: null,                 // ファイルブラウザのDOM要素
           editorWidth: null,                    // エディタ全体の幅(自動計算)
           histories: [],                        // アンドゥ・リドゥ用の履歴データ
@@ -322,6 +324,9 @@ export class BlockEditor {
           },
           flgFileBrowser (state, val) {
             state.flgFileBrowser = val
+          },
+          flgLinkBrowser (state, val) {
+            state.flgLinkBrowser = val
           },
           fileBrowserRef (state, val) {
             state.fileBrowserRef = val

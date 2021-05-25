@@ -444,11 +444,11 @@ export default {
     },
     _startBenchmark () {
       this.performanceTime = {start: performance.now()}
-      console.log('benchmark start')
+      //console.log('benchmark start')
     },
     _endBenchmark () {
       this.performanceTime.end = performance.now()
-      console.log('benchmark end', (this.performanceTime.end - this.performanceTime.start).toFixed(3) + 'msec')
+      //console.log('benchmark end', (this.performanceTime.end - this.performanceTime.start).toFixed(3) + 'msec')
     },
 
     // 選択を行う

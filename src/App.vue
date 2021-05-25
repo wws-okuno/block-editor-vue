@@ -86,9 +86,10 @@
         class="BEV-file-browser">
         <iframe 
           :style="fileBrowserStyle"
-          :src="getConfig('FileBrowser.url')"></iframe>
+          :src="getConfig($store.state.BrowserType)"></iframe>
       </div>
     </transition>
+
     <slot name="sendData"></slot>
   </div>
 </template>

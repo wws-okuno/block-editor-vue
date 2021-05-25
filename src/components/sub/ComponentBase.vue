@@ -165,8 +165,9 @@ export default {
     },
 
     // ファイルブラウザの表示
-    showFileBrowserWindow (callback) {
-      // ファイルブラウザの表示制御
+    showFileBrowserWindow (callback,link) {
+      // ファイルブラウザの表示制御 Link or File
+      this.$store.state.BrowserType = (link) ? 'LinkBrowser.url':'FileBrowser.url'
       this.$store.commit('flgFileBrowser', true)
 
       // 設定ファイル取得
@@ -287,7 +288,7 @@ export default {
         }
       })
       
-      const REG_MATRIX = /matrix\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/
+      const REG_MATRIX = /matrix\(\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\)/
       const ts = {x:0, y:0}
       if (!ignore_tf) {
         let matched

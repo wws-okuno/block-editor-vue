@@ -229,6 +229,12 @@ options = {
         height: '80%',
         resizable: true,
     },
+    LinkBrowser: {
+        url: 'http://localhost:8080/demo_link.html',
+        width: '80%',
+        height: '80%',
+        resizable: true,
+    },
     // cssClasses: [
     //   'class1', 'class2',
     //   {class3: 'クラス3'}, {'test-class': 'テストクラス'}
