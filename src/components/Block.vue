@@ -24,7 +24,7 @@
     <div v-if="!inited" class="BEV-block">
       <div class="loader" v-if="!jsonData.length">Loading...</div>
       <div class="BEV-block-size-input" v-else>
-        <div v-for="(list,i) in jsonData" class="BEV-jsonData">
+        <div v-for="(list,i) in jsonData" class="BEV-jsonData" :key="i">
           <b>{{list.title}}</b><br />
           <div class="BEV-button">
             <button @click="jsonSelect(i)" class="BEV-save" type="button">選択</button>
@@ -41,7 +41,7 @@
         <!-- ブロック展開 -->
         <div class="BEV-block-input">
           <div><b>{{item.blocks.title}}</b></div>
-          <div v-for="(list,index) in item.blocks.data" class="BEV-block-input-for">
+          <div v-for="(list,index) in item.blocks.data" class="BEV-block-input-for" :key="index">
             <textarea :value="list.text" :rows="_rows(list.row)" @input="blocksDataInput(index,$event)" v-if="list.type === 'textarea'"></textarea>
             <div class="BEV-ImageEditBlock" v-else-if="list.type === 'img'">
               <!-- 画像編集エリア -->

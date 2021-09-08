@@ -306,8 +306,10 @@ export default {
       }
     },
     // 設定の取得
-    getConfig (key) {
+    getConfig (key,num) {
       const options = this.$store.state.appOptions
+      if (num) return num
+      //if (key == 'maxRow') console.log(num)
 
       let m
       if ((m = key.match(/^(.+?)\.(.+?)$/))) {

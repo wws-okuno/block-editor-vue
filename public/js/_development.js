@@ -203,7 +203,7 @@ options = {
   allowCssClass: true,
   allowFileBrowser: true,
   itemOrder: [ // メニュー上のアイテムの表示順序
-    'Paragraph', 'Heading', 'List', 'ListN', 'Table', 'Column', 'Html'
+    'Paragraph', 'Heading', 'List', 'Table', 'Column', 'Html'
   ],
   FileBrowser: {
     url: 'http://localhost:8080/demo.html',
@@ -236,43 +236,33 @@ options = {
   ],
   Paragraph: {
     allowImages: true,
-    allowCssClass: true,
-    cssClasses: [{
-        class1: '通常'
-      }, // class="class3" displayed "Class name 3" on editor
-      {
-        class2: '説明1'
-      }, // class="class3" displayed "Class name 3" on editor
-      {
-        class3: '説明2'
-      }, // class="class3" displayed "Class name 3" on editor
-    ],
     defaultImageAlign: 'right',
-    dispName: '複数テキスト',
-
+    dispName: 'テキスト',
+    presets: [{
+      className: 'important',
+      dispName: '重要'
+    }, {
+      className: 'normal',
+      dispName: '通常'
+    }, {
+      imageAlign: 'center',
+      dispName: '中央揃え画像'
+    }],
   },
   List: {
+    maxRows: 10,
     allowStyledText: true,
-    allowCssClass: true,
-    cssClasses: [{
-        class1: '通常'
-      }, // class="class3" displayed "Class name 3" on editor
-      {
-        class2: '説明1'
-      }, // class="class3" displayed "Class name 3" on editor
-      {
-        class3: '説明2'
-      }, // class="class3" displayed "Class name 3" on editor
-    ],
     presets: [{
       className: 'link',
       type: 'unordered',
       dispName: 'リンクリスト'
+    }, {
+      type: 'unordered',
+      dispName: '通常リスト'
+    }, {
+      type: 'ordered',
+      dispName: '箇条書きリスト'
     }]
-  },
-  ListN: {
-    dispName: '通常リスト',
-    // 設定はList内が有効(presets以外)
   },
   Table: {
     maxRow: 10, // テーブルの最大行数
@@ -280,51 +270,31 @@ options = {
     minRow: 1, // テーブルの最小行数
     minCol: 2, // テーブルの最小列数
     presets: [{
-        className: 'product',
-        defaultColNum: 2,
-        maxCol: 2, // テーブルの最大列数
-        minCol: 2, // テーブルの最小列数
-        dispName: '説明用テーブル'
-      },
-      {
-        className: 'product',
-        defaultColNum: 2,
-        maxCol: 2, // テーブルの最大列数
-        minCol: 2, // テーブルの最小列数
-        dispName: '説明用固定テーブル',
-        rows: [{
-          cells: [{
-            content: '見出し１',
-            header: true
-          }, {
-            content: 'C1-2',
-            header: false
-          }]
-        }, {
-          cells: [{
-            content: '見出し２',
-            header: true
-          }, {
-            content: 'C2-2',
-            header: false
-          }]
-        }],
-        colgroup: [{
-          width: null
-        }, {
-          width: null
-        }, {
-          width: null
-        }]
-      }, {
-        dispName: '通常テーブル',
-      }
-    ]
+      className: 'product',
+      dispName: '商品テーブル'
+    }, {
+      dispName: '通常テーブル'
+    }]
   },
   Heading: {
     levels: ['h2', 'h3', 'h4', 'h5', 'h6'],
     // levels: ['h3'],
-
+    levelNames: {
+      h2: '超大見出し',
+      h3: '大見出し',
+      h4: '中見出し',
+      h5: '小見出し',
+      h6: '超小見出し'
+    },
+    presets: [{
+      className: 'title',
+      level: 'h2',
+      dispName: 'タイトル'
+    }, {
+      className: 'sub-title',
+      level: 'h3',
+      dispName: 'サブタイトル'
+    }]
   },
   Column: {
     allowChangeNumColumn: true, // カラム数の変更許可
@@ -332,42 +302,8 @@ options = {
     maxColumn: 5, // 段組の最大数
     minColumn: 2, // 段組の最小数
     presets: [{
-      className: 'fix',
-      dispName: '固定カラム',
-      columns: [{
-        items: [{
-            id: 1, // Warning対策
-            name: 'Heading',
-            level: 'h3',
-            content: 'aa'
-          },
-          {
-            id: 2,
-            name: 'Table',
-            rows: [{
-              cells: [{
-                content: 'C1-1',
-                header: true
-              }, ]
-            }],
-            colgroup: [{
-              width: null
-            }, {
-              width: null
-            }, {
-              width: null
-            }]
-          },
-          {
-            id: 3,
-            name: 'Paragraph',
-            imageAlign: 'left',
-            className: 'tettest',
-            images: [],
-            content: ''
-          },
-        ]
-      }]
+      className: 'special',
+      dispName: '特集カラム'
     }, {
       className: 'normal',
       dispName: '通常カラム'
@@ -393,3 +329,5 @@ function updatePreview(html) {
 
 }
 const instance = new BlockEditor('#app1', options);
+
+

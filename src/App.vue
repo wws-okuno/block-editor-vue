@@ -204,13 +204,15 @@ export default {
             add_menu_items.push(_item)
           })
         } else {
+          // クラス・種類の変更ができないためListNで対策
+          if (key == 'ListN') key = 'List'
           _item.key = key
           if (conf && conf['dispName']) {
             _item.text = conf['dispName']
           } else {
             // 定義がなければ、翻訳データから取得
             _item.text = this.$t(`common.${key}`)
-          }        
+          }
           _item.icon = `Icon${key}`
           _item.id = Util.generateID()
           add_menu_items.push(_item)

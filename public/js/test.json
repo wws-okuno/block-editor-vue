@@ -1,1 +1,54 @@
-[{"html":"<div class=\"hoge\">\n  <div class=\"hoge1\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n</div>","data":[{"text":[],"type":"img","class":"hoge"},{"type":"text","text":""},{"type":"textarea","text":""}],"title":"テスト1"},{"html":"<div class=\"hoge\">\n  <div class=\"hoge1\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge1\">%replace%</div>\n</div>","data":[{"text":[],"class":"hoge","type":"img"},{"text":"","type":"text"},{"text":"","type":"textarea"},{"text":"","type":"textarea"},{"text":"","type":"textarea"},{"text":"","type":"text"},{"text":[],"class":"hoge","type":"img"}],"title":"テスト2"}]
+[{
+    "html": "<div class=\"hoge\">\n  <div class=\"hoge1\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n</div>",
+    "data": [{
+      "text": [],
+      "type": "img",
+      "class": "hoge"
+    }, {
+      "type": "text",
+      "text": ""
+    }, {
+      "type": "textarea",
+      "text": ""
+    }],
+    "title": "テスト1"
+  }, {
+    "html": "<div class=\"hoge\">\n  <div class=\"hoge1\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge3\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>\n  <div class=\"hoge1\">%replace%</div>\n</div>",
+    "data": [{
+      "text": [],
+      "class": "hoge",
+      "type": "img"
+    }, {
+      "text": "",
+      "type": "text"
+    }, {
+      "text": "",
+      "type": "textarea"
+    }, {
+      "text": "",
+      "type": "textarea"
+    }, {
+      "text": "",
+      "type": "textarea"
+    }, {
+      "text": "",
+      "type": "text"
+    }, {
+      "text": [],
+      "class": "hoge",
+      "type": "img"
+    }],
+    "title": "テスト2"
+  },
+  {
+    "html": "<div class=\"hoge\">\n  <div class=\"hoge1\">%replace%</div>\n  <div class=\"hoge2\">%replace%</div>",
+    "data": [{
+      "type": "text",
+      "text": ""
+    }, {
+      "type": "textarea",
+      "text": ""
+    }],
+    "title": "テスト3"
+  }
+]

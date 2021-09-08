@@ -32,8 +32,8 @@
         <label>{{$t("Table.numberOfColumns")}}</label>
         <input 
           @focus="activateItem()"
-          :max="getConfig('maxCol')"
-          :min="getConfig('minCol')"
+          :max="getConfig('maxCol',this.item.maxCol)"
+          :min="getConfig('minCol',this.item.minCol)"
           ref="colNum"
           v-model="colNumInput" type="number"><span class="BEV-cross">x</span>
         <label>{{$t("Table.numberOfRows")}}</label>
@@ -218,8 +218,8 @@
       <transition 
         name="popup-move">
         <TableSizeEdit 
-          :maxCol="getConfig('maxCol')"
-          :minCol="getConfig('minCol')"
+          :maxCol="getConfig('maxCol',this.item.maxCol)"
+          :minCol="getConfig('minCol',this.item.minCol)"
           :maxRow="getConfig('maxRow')"
           :minRow="getConfig('minRow')"
           :row="rowNum"
@@ -355,7 +355,7 @@ export default {
     // 行列数の入力値のデフォルトとして
     // それぞれの最低値を設定しておく
     this.rowNumInput = this.getConfig('defaultRowNum')
-    this.colNumInput = this.getConfig('defaultColNum')
+    this.colNumInput = this.getConfig('defaultColNum',this.item.defaultColNum)
   },
   computed: {
     // 列数のカウント
@@ -363,9 +363,9 @@ export default {
     // 行数のカウント
     rowNum () { return this.item.rows.length },
     // 列数の最大に達しているかどうか
-    isMaxCol () { return this.colNum >= this.getConfig('maxCol') },
+    isMaxCol () { return this.colNum >= this.getConfig('maxCol',this.item.maxCol) },
     // 列数が最小になっているかどうか
-    isMinCol () { return this.colNum <= this.getConfig('minCol') },
+    isMinCol () { return this.colNum <= this.getConfig('minCol',this.item.minCol) },
     // 行数の最大に達しているかどうか
     isMaxRow () { return this.rowNum >= this.getConfig('maxRow') },
     // 行数が最小になっているか
@@ -563,9 +563,9 @@ export default {
           this.rowNumInput > this.getConfig('maxRow')) {
         msg.push(this.$t('Table.rowRangeError', {min: this.getConfig('minRow'), max: this.getConfig('maxRow')}))
       }
-      if (this.colNumInput < this.getConfig('minCol') || 
-          this.colNumInput > this.getConfig('maxCol')) {
-        msg.push(this.$t('Table.colRangeError', {min: this.getConfig('minCol'), max: this.getConfig('maxCol')}))
+      if (this.colNumInput < this.getConfig('minCol',this.item.minCol) || 
+          this.colNumInput > this.getConfig('maxCol',this.item.maxCol)) {
+        msg.push(this.$t('Table.colRangeError', {min: this.getConfig('minCol,this.item.minCol'), max: this.getConfig('maxCol',this.item.maxCol)}))
       }
       if (msg.length) {
         this.$set(this, 'gridSizeValidateMessages', msg)
@@ -1012,6 +1012,10 @@ export class Item extends ItemBase {
       name: this.name,
       className: this.getConfig('allowCssClass') ? cls : null,
       rows: rows,
+      maxCol: this.maxCol,
+      minCol: this.minCol,
+      defaultColNum: this.defaultColNum,
+      
     }
 
     let cell_func = (row_idx, col_idx, rowspan, colspan, orig_cell) => {
@@ -1212,7 +1216,7 @@ export class Item extends ItemBase {
           row.cells = []
           return
         }
-        row.cells.splice(this.getConfig('maxCol'))
+        row.cells.splice(this.getConfig('maxCol',item.maxCol))
         col_num = 0
         row.cells.forEach(cell => {
           col_num++
