@@ -211,7 +211,7 @@ export default {
              this.popupMenuName !== 'uploader' 
     },
     init () {
-    console.log(this.value)
+    //console.log(this.value)
       // クローンして編集用の仮データをつくる
       this.tmpImages = Util.deepCopy(this.value)
       if (this.tmpImages) {

@@ -57,11 +57,11 @@ $slip-at-multiple: 5px;
   
   .BEV-image-wrap:nth-child(1) {
     position: relative;
-    z-index: 1;
+    z-index: 10;
   }
   .BEV-image-wrap:nth-child(2) {
     position: absolute;
-    z-index: 0;
+    z-index: 9;
     height: 100%;
     box-sizing: border-box;
     img {
@@ -71,7 +71,7 @@ $slip-at-multiple: 5px;
   }
   .BEV-image-wrap:nth-child(3) {
     position: absolute;
-    z-index: -1;
+    z-index: 8;
     height: 100%;
     box-sizing: border-box;
     img {
@@ -81,7 +81,7 @@ $slip-at-multiple: 5px;
   }
   .BEV-image-wrap {
     background-color: #fff;
-    width: 25%;
+    width: 100%;
     box-sizing: border-box;
     border-radius: 3px;
     overflow: hidden;

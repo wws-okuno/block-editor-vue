@@ -204,8 +204,10 @@ export default {
             add_menu_items.push(_item)
           })
         } else {
-          // クラス・種類の変更ができないためListNで対策
+          // クラス・種類の変更ができないためNで対策
           if (key == 'ListN') key = 'List'
+          if (key == 'TableN') key = 'Table'
+          if (key == 'ParagraphN') key = 'Paragraph'
           _item.key = key
           if (conf && conf['dispName']) {
             _item.text = conf['dispName']

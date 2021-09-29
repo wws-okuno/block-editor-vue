@@ -135,6 +135,7 @@ const items = [{
 }, {
   name: 'Paragraph',
   imageAlign: 'left',
+  maxImages: 1,
   className: 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest',
   images: [{
     src: 'https://placehold.jp/3d4070/ffffff/150x150.png',
@@ -203,7 +204,7 @@ options = {
   allowCssClass: true,
   allowFileBrowser: true,
   itemOrder: [ // メニュー上のアイテムの表示順序
-    'Paragraph', 'Heading', 'List', 'ListN', 'Table', 'Column', 'Html'
+    'Paragraph', 'ParagraphN', 'Heading', 'List', 'ListN', 'Table', 'TableN', 'Column', 'Html'
   ],
   FileBrowser: {
     url: 'http://localhost:8080/demo.html',
@@ -247,10 +248,26 @@ options = {
         class3: '説明2'
       }, // class="class3" displayed "Class name 3" on editor
     ],
-    defaultImageAlign: 'right',
-    dispName: '複数テキスト',
+    dispName: '自由テキスト',
+    presets: [{
+        className: 'important',
+        dispName: '重要'
+      },
+      {
+        className: 'normal',
+        dispName: '通常'
+      },
+      {
+        imageAlign: 'center',
+        dispName: '中央揃え画像'
+      }
+    ],
+  },
+  ParagraphN: {
+    dispName: '自由テキスト',
 
   },
+
   List: {
     allowStyledText: true,
     allowCssClass: true,
@@ -316,10 +333,15 @@ options = {
         }, {
           width: null
         }]
-      }, {
-        dispName: '通常テーブル',
       }
     ]
+  },
+  TableN: {
+    dispName: '自由テーブル',
+    maxRow: 10, // テーブルの最大行数
+    maxCol: 10, // テーブルの最大列数
+    minRow: 1, // テーブルの最小行数
+    minCol: 2, // テーブルの最小列数
   },
   Heading: {
     levels: ['h2', 'h3', 'h4', 'h5', 'h6'],

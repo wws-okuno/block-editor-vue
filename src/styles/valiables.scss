@@ -593,7 +593,7 @@ $item-wrap-border-radius: 3px;
       .BEV-item {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: start;
       }
       // 無効リストスタイル
       .BEV-item.BEV-disabled {
