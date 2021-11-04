@@ -11,128 +11,73 @@ const merge_cell2 = {
   rowspan: 1,
   colspan: 2
 };
-const items = [{
-  name: 'Heading',
-  className: 'title',
-  level: 'h2',
-  content: 'hoge'
-}, {
-  name: 'Table',
-  rows: [{
-    cells: [{
-        content: 'C1-1',
-        header: true
-      }, {
-        content: 'C1-2',
-        header: true
-      }, {
-        content: 'C1-3',
-        header: true
-      },
-      merge_cell2, {
-        dummy: true,
-        content: '',
-        ref: merge_cell2
-      }
-    ]
-  }, {
-    cells: [{
-        content: 'C2-1',
-        header: false
-      },
-      merge_cell, {
-        content: '',
-        dummy: true,
-        ref: merge_cell
-      }, {
-        content: '',
-        dummy: true,
-        ref: merge_cell
-      }, {
-        content: 'C2-5'
-      }
-    ]
-  }, {
-    cells: [{
-      content: 'C3-1',
-      header: false
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: 'C3-5'
-    }]
-  }, {
-    cells: [{
-      content: 'C4-1',
-      header: false
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: '',
-      dummy: true,
-      ref: merge_cell
-    }, {
-      content: 'C4-5'
-    }]
-  }, {
-    cells: [{
-      content: 'C5-1',
-      header: false
-    }, {
-      content: 'C5-2',
-      header: false
-    }, {
-      content: 'C5-3',
-      header: false
-    }, {
-      content: 'C5-4',
-      header: false
-    }, {
-      content: 'C5-5',
-      header: false
-    }]
-  }],
-  colgroup: [{
-    width: null
-  }, {
-    width: null
-  }, {
-    width: null
-  }, {
-    width: null
-  }, {
-    width: null
-  }, ]
-}, {
-  name: 'List',
-  // type: 'unordered',
-  className: 'test',
-  rows: [{
-    content: 'リスト1<br><span class="ve-bold">太字</span>テスト'
-  }, {
-    content: 'リスト2'
-  }, {
-    content: 'リスト3'
-  }, {
-    content: 'リスト4'
-  }]
-}, {
+const items = [
+  {
+    name: 'Heading',
+    id: "sampleid",
+  },
+  {
+    "id": "gyFifSy5",
+    "name": "Table",
+    "className": "",
+    "colgroup": [
+        {
+            "width": null
+        },
+        {
+            "width": null
+        },
+        {
+            "width": null
+        }
+    ],
+    "rows": [
+        {
+            "cells": [
+                {
+                    "id": "AZnuxq7S",
+                    "content": "<p>1</p>"
+                },
+                {
+                    "id": "a3g8i0lW",
+                    "content": "<p>2</p>"
+                },
+                {
+                    "id": "l0NmGVMt",
+                    "content": "<p>3</p>"
+                }
+            ]
+        },
+        {
+            "cells": [
+                {
+                    "id": "zf4xwpfr",
+                    "content": "<p>1</p>"
+                },
+                {
+                    "id": "ADx9GOO0",
+                    "content": "<p>2</p>"
+                },
+                {
+                    "id": "wZbmjvs3",
+                    "content": "<p>3</p>"
+                }
+            ]
+        }
+    ],
+    "preset": {
+        "className": "",
+        "defaultColNum": 3,
+        "maxRow": 99,
+        "maxCol": 99,
+        "dispName": "ﾃｰﾌﾞﾙ"
+    },
+    "defaultColNum": 3,
+    "maxRow": 99,
+    "maxCol": 99
+},
+  
+  {
   name: 'Paragraph',
   imageAlign: 'left',
   maxImages: 1,
@@ -148,43 +93,6 @@ const items = [{
 }, {
   name: 'Html',
   content: '<div>hoge</div>'
-}, {
-  name: 'Column',
-  className: 'aaaa',
-  columns: [{
-    items: [{
-      name: 'Paragraph',
-      imageAlign: 'left',
-      className: 'tettest',
-      images: [],
-      content: ''
-    }, {
-      name: 'Paragraph',
-      imageAlign: 'right',
-      className: null,
-      images: [],
-      content: ''
-    }]
-  }, {
-    items: [{
-      name: 'Html'
-    }]
-  }, {
-    items: [{
-      name: 'Paragraph',
-      imageAlign: 'left',
-      className: null,
-      images: [],
-      content: ''
-    }]
-  }]
-}, {
-  name: 'Column',
-  columns: [{
-    items: []
-  }, {
-    items: []
-  }]
 }, {
   name: 'Paragraph',
   imageAlign: 'left',
@@ -236,7 +144,7 @@ options = {
     }
   ],
   Paragraph: {
-    allowImages: true,
+    allowImages: false,
     allowCssClass: true,
     cssClasses: [{
         class1: '通常'
@@ -258,6 +166,8 @@ options = {
         dispName: '通常'
       },
       {
+        allowImages: true,
+        className: 'box_img',
         imageAlign: 'center',
         dispName: '中央揃え画像'
       }
@@ -265,7 +175,6 @@ options = {
   },
   ParagraphN: {
     dispName: '自由テキスト',
-
   },
 
   List: {
@@ -293,13 +202,13 @@ options = {
   },
   Table: {
     maxRow: 10, // テーブルの最大行数
-    maxCol: 10, // テーブルの最大列数
+    maxCol: 2, // テーブルの最大列数
     minRow: 1, // テーブルの最小行数
     minCol: 2, // テーブルの最小列数
     presets: [{
         className: 'product',
         defaultColNum: 2,
-        maxCol: 2, // テーブルの最大列数
+        maxCol: 10, // テーブルの最大列数
         minCol: 2, // テーブルの最小列数
         dispName: '説明用テーブル'
       },
@@ -338,10 +247,6 @@ options = {
   },
   TableN: {
     dispName: '自由テーブル',
-    maxRow: 10, // テーブルの最大行数
-    maxCol: 10, // テーブルの最大列数
-    minRow: 1, // テーブルの最小行数
-    minCol: 2, // テーブルの最小列数
   },
   Heading: {
     levels: ['h2', 'h3', 'h4', 'h5', 'h6'],
@@ -402,7 +307,7 @@ options = {
     updatePreview(html);
   },
   onUpdate: function(html) {
-    //console.log(this.items)
+    // console.log(this.items)
     updatePreview(html);
   }
 };

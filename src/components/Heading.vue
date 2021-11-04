@@ -231,7 +231,8 @@ export class Item extends ItemBase {
     let cls_name = ''
     if (this.getConfig('allowCssClass') && item.className) cls_name = ` class="${item.className}"`
 
-    let tag = this._indent(0) + `<${item.level}${cls_name}>${nl}`
+    //CTG id追加
+    let tag = this._indent(0) + `<${item.level}${cls_name} id="${item.id}">${nl}`
     tag += this._indent(1) + `${content}${nl}`
     tag += this._indent(0) + `</${item.level}>`
     return tag

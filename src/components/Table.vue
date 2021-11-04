@@ -1216,7 +1216,8 @@ export class Item extends ItemBase {
           row.cells = []
           return
         }
-        row.cells.splice(this.getConfig('maxCol',item.maxCol))
+        // ctg maxCol個別設定追加のため無効
+        //row.cells.splice(this.getConfig('maxCol',item.maxCol))
         col_num = 0
         row.cells.forEach(cell => {
           col_num++

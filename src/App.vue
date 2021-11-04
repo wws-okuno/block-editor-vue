@@ -141,7 +141,8 @@ export default {
   created () {
     // IDがセットされていないデータを検証
     if (this.items && this.items.length) {
-      this.items.map(item => item.id=Util.generateID())
+      // CTG 保存されたＩＤを復元する
+      this.items.map(item => item.id = (item.id) ? item.id : Util.generateID())
     }
 
     // HTMLデータを内部データに変換する
@@ -204,7 +205,7 @@ export default {
             add_menu_items.push(_item)
           })
         } else {
-          // クラス・種類の変更ができないためNで対策
+          // presetsがあるとクラス・種類の変更ができないためNで対策
           if (key == 'ListN') key = 'List'
           if (key == 'TableN') key = 'Table'
           if (key == 'ParagraphN') key = 'Paragraph'

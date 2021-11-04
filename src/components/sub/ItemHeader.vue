@@ -6,6 +6,12 @@
     ref="nameWrap"
     class="BEV-name-wrap">
 
+    <!-- CTG IDの表示 -->
+    <div 
+      v-if="item.name == 'Heading'"
+      class="BEV-id-name">
+      <span>#{{item.id}}</span>
+    </div>
     <div 
       @mouseenter="showMoveButton()"
       @mouseleave="hideMoveButton()"
@@ -342,6 +348,25 @@ $sep-btn-width: 26px;                     // セパレータの追加ボタン�
   }
 
   .BEV-sub-name {
+    @extend %secondary-subtitle;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: $sub-label-min-width;
+    max-width: calc(50% - #{$sep-btn-width/2} - #{$config-width} - #{$label-max-width});
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0 .5em;
+    margin: 0;
+    z-index: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .BEV-id-name {
     @extend %secondary-subtitle;
 
     display: flex;
